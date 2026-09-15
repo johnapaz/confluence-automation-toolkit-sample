@@ -1,0 +1,4 @@
+page_id,target_url,target_title
+10001,https://kb.example.com/articles/reset-demo-password,Reset a demo password
+10002,https://kb.example.com/articles/request-demo-access,Request demo access
+10003,https://kb.example.com/articles/update-demo-profile,Update a demo profile
