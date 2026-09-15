@@ -1,0 +1,14 @@
+$ confluence-toolkit --dry-run add --csv examples/sample-input.csv
+
+Plan: add 3 redirect(s) [DRY RUN]
+Page ID   Target
+10001     https://kb.example.com/articles/reset-demo-password
+10002     https://kb.example.com/articles/request-demo-access
+10003     https://kb.example.com/articles/update-demo-profile
+
+Testing API connection…
+• 1: 10001 — Would add redirect to Reset a demo password.
+• 2: 10002 — Would add redirect to Request demo access.
+• 3: 10003 — Would add redirect to Update a demo profile.
+
+Summary: changed=0 planned=3 skipped=0 failed=0
