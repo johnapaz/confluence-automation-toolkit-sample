@@ -1,5 +1,8 @@
 # Usage guide
 
+> This is an unvalidated portfolio reconstruction. Its automated tests run offline; the package has
+> not been integration-tested against a live Confluence instance.
+
 ## Before you begin
 
 Use a non-production Confluence space for evaluation. Confirm that your deployment permits HTML

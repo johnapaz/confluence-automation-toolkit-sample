@@ -2,14 +2,18 @@
 
 ## What this repository is
 
-This repository is a sanitized reconstruction of documentation-operations tooling I designed and
-maintained during a large Confluence migration. It demonstrates representative architecture,
-workflows, safety controls, and documentation practices without publishing internal source code.
+This repository is a sanitized reconstruction of documentation-operations tooling John Paz
+designed and maintained while working as a contract technical writer supporting Airbnb during a
+large Confluence migration.
 
-The executable subset focuses on redirect management because that utility provides a compact view
-of the broader work: REST API integration, interactive and batch workflows, reversible content
-changes, status feedback, authentication boundaries, error handling, and version-based
-auditability.
+The public subset focuses on redirect management because it provides a compact view of the broader
+work: REST API integration, interactive and batch workflows, reversible content changes, status
+feedback, authentication boundaries, error handling, and version-based auditability.
+
+It is a portfolio case study—not the original internal source, a supported product, or a claim that
+John personally authored every line of the current package.
+
+Airbnb did not sponsor, review, or endorse this repository.
 
 ## What the original tool family included
 
@@ -25,43 +29,45 @@ progress reporting, confirmation steps, and per-operation feedback. Later utilit
 of earlier projects, so the archive set represented an evolving tool family rather than four
 entirely independent codebases.
 
-## Sanitization and reconstruction
+## Original authorship and AI assistance
+
+John identified the operational bottleneck, defined the product requirements, selected the
+workflows, designed the operator experience and safeguards, directed AI-assisted implementation,
+reviewed and tested changes against real migration scenarios, maintained working versions in Git,
+documented setup and use, and supported the colleagues who relied on the tools.
+
+That is the work this case study is intended to demonstrate: technical communication, systems
+thinking, API fluency, operator advocacy, and responsible stewardship of AI-assisted software.
+
+## Public reconstruction
+
+John supplied the original source archives, explained their history and use, chose the portfolio
+goal, and defined the confidentiality and accuracy constraints. OpenAI Codex then inspected the
+archives and produced much of this public package's sanitization, refactoring, tests,
+documentation, and presentation under John's direction.
+
+John has not manually authored or independently validated every line of the reconstructed package.
+The public code has offline automated tests, but it has not been integration-tested against a live
+Confluence environment. Its executable form demonstrates the original patterns; it does not prove
+that this exact package is production-ready.
+
+See [CONTRIBUTIONS.md](CONTRIBUTIONS.md) for the explicit contribution boundary.
+
+## Sanitization
 
 The public version excludes or generalizes:
 
-- employer and internal team names;
+- internal team names;
 - production, development, source-control, and destination-system domains;
 - internal project keys, page IDs, solution IDs, labels, and sample records;
 - destination-specific URL construction and migration taxonomy;
 - internal authentication terminology and network assumptions;
 - duplicate or superseded modules carried between tool iterations; and
-- any credentials, tokens, page bodies, employee names, or production exports.
+- credentials, tokens, page bodies, employee names, and production exports.
 
 Examples use reserved `example.com` domains and invented identifiers. Runtime configuration
-replaces hard-coded environments. The package was rewritten around the verified behavior of the
-original tools; it is not a verbatim copy with strings deleted.
-
-The reconstruction also narrows redirect removal to markup carrying an explicit management marker
-and keeps credentials runtime-only. Those choices make the public example safer and clearer while
-preserving the original add/remove, dry-run, confirmation, version-comment, labeling, batch, and
-feedback patterns.
-
-## Authorship and AI assistance
-
-I used AI-assisted coding as part of the original implementation workflow. My responsibilities
-included:
-
-- identifying the operational bottleneck and defining product requirements;
-- choosing where automation was appropriate and where human confirmation was required;
-- designing operator flows, messages, safeguards, and recovery paths;
-- reviewing and testing generated code against migration scenarios;
-- using Git to protect working versions while capabilities evolved; and
-- documenting setup and usage so colleagues could reproduce the work.
-
-For this portfolio reconstruction, AI assistance was also used to inspect, sanitize, refactor,
-test, and document the sample under my direction. The repository is intended to show technical
-communication, systems thinking, API fluency, and responsible tool stewardship—not to present me
-as a full-time software engineer.
+replaces hard-coded environments. The package was rewritten around verified behaviors of the
+original tools; it is not a verbatim copy with sensitive strings deleted.
 
 ## Impact and claim boundaries
 
@@ -70,4 +76,11 @@ hundreds of hours of manual work and helped the team complete the migration assi
 schedule. Those outcomes describe the internal toolset as a whole, not a benchmark of this public
 redirect subset.
 
-No former employer endorses or maintains this repository.
+Former colleagues may voluntarily add firsthand context in the
+[colleague-perspectives thread](https://github.com/johnapaz/confluence-automation-toolkit-sample/issues/2).
+Their comments represent only their personal experiences.
+
+## Intended use
+
+This repository exists to support a technical-writing portfolio. It is not maintained as an
+operational migration resource, no production support is offered, and no license is granted.

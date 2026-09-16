@@ -1,25 +1,49 @@
-# Confluence Automation Toolkit — Portfolio Sample
+# Confluence Migration Automation — Sanitized Portfolio Case Study
 
-> **Portfolio notice:** This repository is a sanitized portfolio reconstruction of internal
-> documentation automation tooling I developed in a previous role. It contains no production
-> credentials, proprietary data, internal URLs, or employer source files.
+> [!IMPORTANT]
+> This repository is a **demonstration artifact**, not a supported production tool. The original
+> utilities were developed by John Paz while working as a contract technical writer supporting
+> Airbnb. This public repository is an AI-assisted, sanitized reconstruction created with OpenAI
+> Codex under John's direction. It contains no employer source files or production data, and this
+> exact reconstruction has not been integration-tested against a live Confluence instance.
 
-This project demonstrates how I turned a high-volume documentation migration into a controlled,
-repeatable workflow. The original assignment required thousands of changes across Confluence.
-Performing those changes manually through the UI would have consumed hundreds of hours and made
-results difficult to verify.
+## The case study in 30 seconds
 
-I began with a focused permission-management script, then developed a family of Python utilities
-for redirect management, macro cleanup, find-and-replace operations, permissions, and migration
-reporting. Six teammates ultimately relied on those tools. Collectively, they saved hundreds of
-hours and helped the team complete the migration ahead of schedule.
+| | |
+| --- | --- |
+| **Challenge** | A large documentation migration required thousands of repetitive Confluence changes that would have taken hundreds of hours through the UI. |
+| **John's role** | Defined the operational requirements, operator workflows, safeguards, and documentation; directed AI-assisted implementation; reviewed and tested the original tools in the working environment; and maintained functioning versions in Git. |
+| **Outcome** | Six teammates relied on the original tool family. Collectively, the tools saved hundreds of hours and helped the team complete the migration ahead of schedule. |
+| **Artifact here** | One representative workflow—redirect management—reconstructed with fictional data to demonstrate the API, CLI, safety, and documentation patterns. |
 
-This repository presents one coherent, portfolio-safe slice of that work: a CLI for adding and
-removing page redirects through the Confluence REST API.
+The original family grew from a permission-management script into focused utilities for redirects,
+macro cleanup, find-and-replace operations, permissions, and migration reporting. This repository
+is evidence of the problem-solving and documentation approach behind that work; it is not the
+original internal code.
+
+## Operator experience
+
+These images recreate the original Rich-style command-line experience with fictional page IDs,
+titles, and `example.com` URLs. No live or internal system is shown.
+
+![Sanitized workflow-selection screen showing the available redirect operations](assets/cli-workflow-selection.png)
+
+*A focused menu made single-page, CSV batch, and reversal workflows discoverable without requiring
+operators to memorize commands.*
+
+![Sanitized batch-review screen showing fictional pages and a confirmation prompt](assets/cli-batch-review.png)
+
+*Operators could review the destination, record count, and dry-run state before authorizing a
+write.*
+
+![Sanitized processing screen showing per-page results and a completion summary](assets/cli-processing-results.png)
+
+*Per-page feedback exposed partial failures while version comments and labels supported later
+verification.*
 
 ## What the sample demonstrates
 
-- Version-aware REST API reads and writes
+- Version-aware Confluence REST API reads and writes
 - Single-page and CSV batch processing
 - Preview and explicit confirmation before writes
 - A dry-run path that performs no mutation
@@ -30,36 +54,24 @@ removing page redirects through the Confluence REST API.
 - Runtime-only credentials and diagnostics that omit credentials and page bodies
 - Typed boundaries between the CLI, service layer, and API client
 
-The target system is intentionally generic. Operators provide complete destination URLs; no
-former employer routing rules, hostnames, identifiers, or business logic remain.
+The target system is intentionally generic. Operators provide complete destination URLs; no former
+employer routing rules, hostnames, identifiers, or business logic remain.
 
-## Quick start
+## Evidence, attribution, and boundaries
 
-Requirements: Python 3.10+ and access to a Confluence instance that supports the REST endpoints
-documented in [API reference](docs/api-reference.md).
+- [Contribution statement](CONTRIBUTIONS.md) — what John owned in the original work and what Codex
+  produced for the public reconstruction
+- [Portfolio note](PORTFOLIO-NOTE.md) — provenance, sanitization, validation status, and claim
+  boundaries
+- [Colleague perspectives](https://github.com/johnapaz/confluence-automation-toolkit-sample/issues/2)
+  — an open thread for voluntary firsthand comments about the original tool family
+- [Colleague outreach guide](docs/requesting-colleague-perspectives.md) — consent, confidentiality,
+  and a message that asks for firsthand comments without scripting an endorsement
+- [Paste-ready portfolio entry](docs/portfolio-entry.md) — short and expanded summaries for a
+  portfolio document
 
-```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install -e .
-
-export CONFLUENCE_BASE_URL="https://docs.example.com/confluence"
-export CONFLUENCE_USERNAME="portfolio-user"
-export CONFLUENCE_API_TOKEN="<set-locally>"
-
-confluence-toolkit --dry-run add --csv examples/sample-input.csv
-```
-
-The tool prompts for an API token when `CONFLUENCE_API_TOKEN` is unset. It does not write
-credentials to disk or include them in debug messages.
-
-To run the automated checks:
-
-```bash
-pip install -e '.[dev]'
-pytest
-ruff check .
-```
+Airbnb did not sponsor, review, or endorse this repository. Any colleague comments are personal
+statements by their authors, not employer endorsements.
 
 ## Safety model
 
@@ -76,43 +88,57 @@ Every write follows the same sequence:
 Removal targets only redirect markup carrying this sample's management marker. It does not delete
 unrelated HTML macros.
 
-## Documentation
+## Technical documentation
 
 - [Usage guide](docs/usage.md) — configuration, commands, CSV contracts, and troubleshooting
 - [Architecture](docs/architecture.md) — components, data flow, and design decisions
 - [API reference](docs/api-reference.md) — REST calls, Python interfaces, and result states
-- [Portfolio note](PORTFOLIO-NOTE.md) — provenance, sanitization, AI-assisted development, and scope
-- [Publication checklist](docs/publication-checklist.md) — final owner review before public release
+- [Publication checklist](docs/publication-checklist.md) — owner review before sharing or reuse
+
+## Optional local evaluation
+
+The commands below exercise the reconstructed sample. They do not make it production-ready.
+Confluence Cloud and Server/Data Center deployments differ in authentication, storage-format
+behavior, HTML macro policy, and minor-edit support. Use only an authorized non-production space.
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -e .
+
+export CONFLUENCE_BASE_URL="https://docs.example.com/confluence"
+export CONFLUENCE_USERNAME="portfolio-user"
+export CONFLUENCE_API_TOKEN="<set-locally>"
+
+confluence-toolkit --dry-run add --csv examples/sample-input.csv
+```
+
+The public reconstruction has offline unit tests for transformation, validation, and request-body
+behavior. It has **not** been run against a live Confluence API.
+
+```bash
+pip install -e '.[dev]'
+pytest
+ruff check .
+```
 
 ## Repository structure
 
 ```text
 .
-├── docs/                      # Task, architecture, API, and review documentation
-├── examples/                  # Dummy CSV input and representative console output
+├── assets/                    # Sanitized CLI screenshots
+├── docs/                      # Portfolio, usage, architecture, and API documentation
+├── examples/                  # Fictional CSV input and representative console output
+├── scripts/                   # Reproducible screenshot renderer
 ├── src/confluence_toolkit/    # CLI, REST client, models, and redirect service
 ├── tests/                     # Offline unit tests; no Confluence access required
-├── .env.example               # Empty local configuration template
-├── PORTFOLIO-NOTE.md          # Context and disclosure
+├── CONTRIBUTIONS.md           # Authorship and contribution boundaries
+├── PORTFOLIO-NOTE.md          # Provenance and disclosure
 └── pyproject.toml             # Package metadata and development tooling
 ```
 
-## Development approach
+## Use and licensing
 
-I used AI-assisted coding during the original project as an implementation accelerator. I defined
-the operational problem and requirements, selected the workflows, reviewed generated changes,
-tested behavior against real scenarios, documented usage, and kept working versions under Git so
-new changes could be evaluated without breaking established tools.
-
-The same accountability applies here: AI assistance does not replace product judgment, source
-review, testing, security review, or authorship of the documentation strategy.
-
-## Scope and limitations
-
-This is an executable portfolio sample, not a supported production package. Confluence Cloud and
-Server/Data Center deployments differ in authentication, storage-format behavior, HTML macro
-policy, and minor-edit support. Review the API contract and test against a non-production space
-before adapting this code.
-
-No license is included. The repository owner should select one only after confirming the rights and
-distribution terms appropriate for this reconstruction.
+This repository was made to demonstrate prior documentation-operations work. It is not maintained
+as a migration resource, and no operational support is offered. No license is included; public
+visibility does not grant permission to reuse the code beyond rights provided by GitHub's terms.
